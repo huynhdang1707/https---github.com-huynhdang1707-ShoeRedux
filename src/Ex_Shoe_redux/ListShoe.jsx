@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
   render() {
     let {list} = this.props
     return (
-      <div className='row col-6'>{list.map((item)=>{
+      <div className='row col-6'style={{float:'right'}}>{list.map((item)=>{
         return <ItemShoe key={item.id} data={item}/>
       })}</div>
     )

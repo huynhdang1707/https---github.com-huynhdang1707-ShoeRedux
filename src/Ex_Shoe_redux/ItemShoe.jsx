@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
         <h4>{this.props.data.name}</h4>
         
         <button onClick={()=>this.props.handleAddToCart(this.props.data)} className='btn btn-danger'>ADD</button>
+        
       </div>
     )
   }
