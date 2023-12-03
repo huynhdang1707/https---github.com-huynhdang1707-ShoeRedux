@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { DELETE } from "./reducer/constant";
+import { DELETE, GIAM, TANG, ADD } from "./reducer/constant";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import './index.css';
+import "./index.css";
 
 class CartShoe extends Component {
   constructor(props) {
@@ -56,7 +56,13 @@ class CartShoe extends Component {
                       <img width={70} src={item.image} alt="" />
                     </td>
                     <td>
-                      <strong>{item.soLuong}</strong>
+                      <strong>
+                        <button onClick={() => this.props.handleGiam(item)}>-</button>
+                        {item.soLuong}
+                        <button onClick={() => this.props.handleTang(item)}>
+                          +
+                        </button>
+                      </strong>
                     </td>
                     <td>
                       <button
@@ -85,6 +91,7 @@ class CartShoe extends Component {
             </Modal.Header>
 
             <Modal.Body>
+              <div>{this.state.viewItem.id}</div>
               <div>{this.state.viewItem.name}</div>
               <div>{this.state.viewItem.price}</div>
               <div>{this.state.viewItem.soLuong}</div>
@@ -118,6 +125,29 @@ let mapDispatchProps = (dispatch) => {
       };
       dispatch(action);
     },
+
+    handleTang: (shoe) => {
+      let action = {
+        type: ADD,
+        payload: shoe,
+      };
+      dispatch(action);
+    },
+    handleGiam: (shoe) => {
+      let action = {
+        type: GIAM,
+        payload: shoe,
+      };
+      dispatch(action);
+    },
+    // handleGiam : ()=> {
+    //     let action ={
+    //         type : GIAM,
+    //         payload : 1,
+    //     };
+    //     dispatch(action)
+
+    // }
   };
 };
 
